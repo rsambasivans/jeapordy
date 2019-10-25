@@ -109,6 +109,7 @@ function App() {
                 <MenuItem value={1000}>1000</MenuItem>
                 </Select>
               </FormControl>
+              />
 
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Grid container justify="space-around">
@@ -125,6 +126,8 @@ function App() {
                       'aria-label': 'change date',
                     }}
               />
+              </Grid>
+              </MuiPickersUtilsProvider>
 
          </form>
         <a
