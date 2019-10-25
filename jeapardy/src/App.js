@@ -41,7 +41,13 @@ function App() {
                 setQuery(ev.target.value);
                 
                 ev.preventDefault();
-
+                fetch('http://jservice.io/api/random?count=10')
+        .then(res => res.json())
+        .then((data) => {
+          console.log(data)
+        })
+        .catch(console.log)
+      
               }
               }}
             />
