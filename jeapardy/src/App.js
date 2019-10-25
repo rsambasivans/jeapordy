@@ -8,6 +8,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -26,6 +34,12 @@ function App() {
    const classes = useStyles();
    const [query, setQuery] = useState("");
    const [difficulty, setDifficulty] = useState("");
+   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+   const handleDateChange = date => {
+    setSelectedDate(date);
+    };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -95,6 +109,22 @@ function App() {
                 <MenuItem value={1000}>1000</MenuItem>
                 </Select>
               </FormControl>
+
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Grid container justify="space-around">
+                  <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="MM/dd/yyyy"
+                    margin="normal"
+                    id="date-picker-inline"
+                    label="Date picker inline"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                    }}
+              />
 
          </form>
         <a
