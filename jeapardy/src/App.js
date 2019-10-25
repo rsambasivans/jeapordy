@@ -35,19 +35,29 @@ function App() {
               className={classes.textField}
               margin="normal"
               onKeyPress={(ev) => {
-              
+
               if (ev.key === 'Enter') {
+                let arr = [];
                 // Do code here
                 setQuery(ev.target.value);
-                
+                var count = 0;
                 ev.preventDefault();
-                fetch('http://jservice.io/api/random?count=10')
-        .then(res => res.json())
-        .then((data) => {
+                while (count < 10) {
+                  fetch('http://jservice.io/api/random?count=3')
+                  .then(res => res.json())
+                  .then((data) => {
+                  for (var i = 0; i < 3; i++) {
+                    if (data.at(i).at(question).includes(query)) {
+                      count++;
+                      arr.append(data.at(i));
+
+                    }
+                  }
+                }
           console.log(data)
         })
         .catch(console.log)
-      
+
               }
               }}
             />
