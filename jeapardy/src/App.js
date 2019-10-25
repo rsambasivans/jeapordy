@@ -40,26 +40,28 @@ function App() {
                 let arr = [];
                 // Do code here
                 setQuery(ev.target.value);
-                var count = 0;
+                let count = 0;
+                let limit=0;
                 ev.preventDefault();
-                while (count < 10) {
+                while (count < 10 && limit<50) {
+                  limit++;
                   fetch('http://jservice.io/api/random?count=3')
                   .then(res => res.json())
                   .then((data) => {
-                  for (var i = 0; i < 3; i++) {
-                    if (data.at(i).at(question).includes(query)) {
+                  for (let i = 0; i < 3; i++) {
+                    if (data[i]['question'].includes(query)) {
                       count++;
-                      arr.append(data.at(i));
+                      arr.push(data[i]);
+                      console.log(data[i]);
 
                     }
                   }
                 }
-          console.log(data)
-        })
+                )
         .catch(console.log)
 
               }
-              }}
+              }}}
             />
 
          </form>
