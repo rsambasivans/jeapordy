@@ -76,8 +76,9 @@ function App() {
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="difficultySelect">Difficulty</InputLabel>
               <Select
-                value={values.difficulty}
-                onChange={handleChange}
+                value={difficulty}
+                onChange={(ev) => {setDifficulty(ev.target.value);
+                  console.log(difficulty)}}
                 inputProps={{
                   name: 'difficulty',
                   id: 'difficulty-helper',
@@ -86,7 +87,7 @@ function App() {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={none}>Any difficulty</MenuItem>
+                <MenuItem value={0}>Any difficulty</MenuItem>
                 <MenuItem value={200}>200</MenuItem>
                 <MenuItem value={400}>400</MenuItem>
                 <MenuItem value={600}>600</MenuItem>
