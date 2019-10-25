@@ -64,8 +64,11 @@ function App() {
         .catch(console.log)
 
               }
-              }}
-              <FormControl className={classes.formControl}>
+              }}}
+              
+            />
+
+            <FormControl className={classes.formControl}>
               <InputLabel htmlFor="difficultySelect">Difficulty</InputLabel>
               <Select
                 value={values.difficulty}
@@ -85,8 +88,7 @@ function App() {
                 <MenuItem value={800}>800</MenuItem>
                 <MenuItem value={1000}>1000</MenuItem>
                 </Select>
-              </FormControl>}
-            />
+              </FormControl>
 
          </form>
         <a
