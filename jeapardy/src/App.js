@@ -14,11 +14,13 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1),
     width: 200,
   },
+
 }));
 
 function App() {
    const classes = useStyles();
    const [query, setQuery] = useState("");
+   const [difficulty, setDifficulty] = useState("");
   return (
     <div className="App">
       <header className="App-header">
@@ -40,6 +42,7 @@ function App() {
                 let arr = [];
                 // Do code here
                 setQuery(ev.target.value);
+                setDifficulty(ev.target.value);
                 let count = 0;
                 let limit=0;
                 ev.preventDefault();
@@ -49,7 +52,7 @@ function App() {
                   .then(res => res.json())
                   .then((data) => {
                   for (let i = 0; i < 3; i++) {
-                    if (data[i]['question'].includes(query)) {
+                    if (data[i]['question'].includes(query) && arr.indexOf(query) > -1) {
                       count++;
                       arr.push(data[i]);
                       console.log(data[i]);
@@ -61,7 +64,28 @@ function App() {
         .catch(console.log)
 
               }
-              }}}
+              }}
+              <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="difficultySelect">Difficulty</InputLabel>
+              <Select
+                value={values.difficulty}
+                onChange={handleChange}
+                inputProps={{
+                  name: 'difficulty',
+                  id: 'difficulty-helper',
+                }}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={none}>Any difficulty</MenuItem>
+                <MenuItem value={200}>200</MenuItem>
+                <MenuItem value={400}>400</MenuItem>
+                <MenuItem value={600}>600</MenuItem>
+                <MenuItem value={800}>800</MenuItem>
+                <MenuItem value={1000}>1000</MenuItem>
+                </Select>
+              </FormControl>}
             />
 
          </form>
