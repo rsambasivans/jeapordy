@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import TextField from '@material-ui/core/TextField';
@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
    const classes = useStyles();
+   const [query, setQuery] = useState("");
   return (
     <div className="App">
       <header className="App-header">
@@ -25,7 +26,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-
+        <p> Current search: {query} </p>
          <form className={classes.container} noValidate autoComplete="off">
               <TextField
               id="standard-search"
@@ -37,8 +38,10 @@ function App() {
               
               if (ev.key === 'Enter') {
                 // Do code here
-                console.log("success");
+                setQuery(ev.target.value);
+                
                 ev.preventDefault();
+
               }
               }}
             />
